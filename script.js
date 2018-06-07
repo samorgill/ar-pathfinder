@@ -68,7 +68,7 @@
 
 // 2nd App
 $(function () {
-    let video = document.getElementById('camera-stream');
+    let video = document.createElement('video');
     video.style.width = document.width + 'px';
     video.style.height = document.height + 'px';
     video.setAttribute('autoplay', '');
