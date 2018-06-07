@@ -5,50 +5,45 @@
     <link rel="stylesheet" href="./style.css">
     <script src='public/webvr-polyfill.js'></script>
     <script src="https://aframe.io/aframe/dist/aframe-master.min.js"></script>
-    <!--<style>-->
-        <!--video#camera-stream {-->
-            <!--position: fixed;-->
-            <!--top: 50%;-->
-            <!--left: 50%;-->
-            <!--min-width: 100%;-->
-            <!--min-height: 100%;-->
-            <!--width: auto;-->
-            <!--height: auto;-->
-            <!--z-index: -100;-->
-            <!-- -ms-transform: translateX(-50%) translateY(-50%);-->
-            <!-- -moz-transform: translateX(-50%) translateY(-50%);-->
-            <!-- -webkit-transform: translateX(-50%) translateY(-50%);-->
-            <!--transform: translateX(-50%) translateY(-50%);-->
-            <!--background-size: cover;-->
-        <!--}-->
-        <!--</style>-->
+    <style>
+        video#camera-stream {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+             -ms-transform: translateX(-50%) translateY(-50%);
+             -moz-transform: translateX(-50%) translateY(-50%);
+             -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            background-size: cover;
+        }
+        </style>
 </head>
 <body>
 
-<!--<video id="camera-stream" autoplay playsinline></video>-->
+<video id="camera-stream" autoplay playsinline></video>
 
-<input type="file" accept="video/*;capture=camcorder">
 
-<!--<div class="select">-->
-    <!--<label for="videoSource">Select Camera: </label><select id="videoSource"></select>-->
-<!--</div>-->
+<a-scene>
 
-<!--<a-scene>-->
-
-    <!--<a-assets>-->
+    <a-assets>
         <!--&lt;!&ndash; <video id="camera-stream" width="500" autoplay></video>  &ndash;&gt;-->
         <!--&lt;!&ndash;         <video id="video" src="https://ucarecdn.com/fadab25d-0b3a-45f7-8ef5-85318e92a261/"-->
      <!--autoplay loop crossorigin="anonymous"></video> &ndash;&gt;-->
-    <!--</a-assets>-->
+    </a-assets>
 
     <!--<a-videosphere src="#camera-stream" rotation="0 180 0"></a-videosphere>-->
     <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
    <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
    <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
    <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>  -->
-    <!--<a-text  position="-0.5 0 -7" height="20" width="20" value="Gate A7" color="#EF2D5E"></a-text>-->
-    <!--<a-triangle position="0 0 -4" src="#platform" rotation="-90 0 0" color="#EF2D5E"></a-triangle>-->
-<!--</a-scene>-->
+    <a-text  position="-0.5 0 -7" height="20" width="20" value="Gate A7" color="#EF2D5E"></a-text>
+    <a-triangle position="0 0 -4" src="#platform" rotation="-90 0 0" color="#EF2D5E"></a-triangle>
+</a-scene>
 <script src="./script.js"></script>
 
 </body>
