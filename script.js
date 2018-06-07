@@ -78,7 +78,7 @@ $(function () {
     let constraints = {
         audio: false,
         video: {
-            facingMode: 'environment'
+            facingMode: 'user'
         }
     }
 
