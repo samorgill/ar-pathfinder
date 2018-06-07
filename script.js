@@ -67,30 +67,32 @@
 
 
 // 2nd App
-$(function () {
-    let video = document.createElement('video');
-    video.style.width = document.width + 'px';
-    video.style.height = document.height + 'px';
-    video.setAttribute('autoplay', '');
-    video.setAttribute('muted', '');
-    video.setAttribute('playsinline', '');
 
-    let facingMode = "user";
+window.onload = function() {
 
-    let constraints = {
-        audio: false,
-        video: {
-            facingMode: facingMode
+        let video = document.createElement('video');
+        video.style.width = document.width + 'px';
+        video.style.height = document.height + 'px';
+        video.setAttribute('autoplay', '');
+        video.setAttribute('muted', '');
+        video.setAttribute('playsinline', '');
+
+        let facingMode = "user";
+
+        let constraints = {
+            audio: false,
+            video: {
+                facingMode: facingMode
+            }
         }
-    }
 
-    navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
-        video.srcObject = stream;
-    });
+        navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
+            video.srcObject = stream;
+        });
 
-    document.body.appendChild(video);
-});
+        document.body.appendChild(video);
 
+}
 
 // 3rd
 // var videoSelect = document.querySelector("select#videoSource");
