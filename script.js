@@ -77,7 +77,7 @@ window.onload = function() {
         video.setAttribute('muted', '');
         video.setAttribute('playsinline', '');
 
-        let facingMode = "user";
+        let facingMode = "environment";
 
         let constraints = {
             audio: false,
