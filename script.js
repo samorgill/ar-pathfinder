@@ -7,11 +7,10 @@ window.onload = function() {
         video.setAttribute('muted', '');
         video.setAttribute('playsinline', '');
 
-        // Back cameria (phones)
-        let facingMode = "environment";
+        // let facingMode = "environment";
 
         // Front camera
-        // let facingMode = "user";
+        let facingMode = "user";
 
         let constraints = {
             audio: false,
