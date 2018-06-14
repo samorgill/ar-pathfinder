@@ -47,7 +47,7 @@ window.onload = function() {
 // }
 
 function createEl() {
-    let ascene = document.querySelector('a-scene');
+    // let ascene = document.querySelector('a-scene');
 
     let triangle = document.createElement('a-triangle');
 
@@ -55,7 +55,7 @@ function createEl() {
     // triangle.setAttribute('position', '0 0 -13');
     triangle.setAttribute('position', {x: 1, y: 2, z: -3});
 
-    ascene.appendChild(triangle);
+    document.getElementById('ascene').appendChild(triangle);
 }
 
 
