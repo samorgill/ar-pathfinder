@@ -46,13 +46,15 @@ window.onload = function() {
 //     document.body.append(arrow);
 // }
 
-createEl() {
-    let newEl = document.createElement('a-triangle');
+function createEl() {
+    let ascene = document.getElementById('ASCENE');
+
+ let newEl = ascene.createElement('a-triangle');
 
     newEl.setAttribute('text', 'Hello');
     newEl.setAttribute('position', '0 0 -13');
 
-    document.body.appendChild(newEL);
+    ascene.appendChild(newEL);
 }
 
 
