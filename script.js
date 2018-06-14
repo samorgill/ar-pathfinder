@@ -34,7 +34,7 @@ window.onload = function() {
 
     initMap();
 
-    createEl();
+   // createEl();
 };
 
 function createEl() {
