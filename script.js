@@ -34,7 +34,19 @@ window.onload = function() {
 
     initMap();
 
+    setInterval(() => {
+        currentPosotion();
+    }, 5000);
+
 };
+
+function currentPosotion(){
+    let arrow = document.createElement('a-triangle');
+    arrow.setAttribute(newEl, 'text', 'Hello Rob & Gav');
+    arrow.setAttribute(newEl, 'position', '0 0 -13');
+
+    document.body.append(arrow)
+}
 
 
 
