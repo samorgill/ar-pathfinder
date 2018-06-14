@@ -47,14 +47,14 @@ window.onload = function() {
 // }
 
 function createEl() {
-    let ascene = document.getElementById('ASCENE');
+    let ascene = document.querySelector('a-scene');
 
- let newEl = ascene.createElement('a-triangle');
+    let triangle = document.createElement('a-triangle');
 
-    newEl.setAttribute('text', 'Hello');
-    newEl.setAttribute('position', '0 0 -13');
+    triangle.setAttribute('text', 'Hello');
+    triangle.setAttribute('position', '0 0 -13');
 
-    ascene.appendChild(newEL);
+    ascene.appendChild(triangle);
 }
 
 
