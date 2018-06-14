@@ -34,7 +34,7 @@ window.onload = function() {
 
     initMap();
 
-   // createEl();
+    createEl();
 };
 
 function createEl() {
@@ -56,14 +56,12 @@ function createEl() {
     triangle.setAttribute('rotation', {x: -90, y: 0, z: 0});
     triangle.setAttribute('color', "#EF2D5E");
 
-    this.generatePosition();
-
     document.getElementById("a-scene").appendChild(triangle);
 
 }
 
 function generatePosition(curPos){
-    console.log('test')
+
 }
 
 function initMap() {
