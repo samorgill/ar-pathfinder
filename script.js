@@ -34,17 +34,8 @@ window.onload = function() {
 
     initMap();
 
-        createEl();
-
+    createEl();
 };
-
-// function currentPosotion(){
-//     let arrow = this.renderer.createElement('a-triangle');
-//     arrow.setAttribute(newEl, 'text', 'Hello Rob & Gav');
-//     arrow.setAttribute(newEl, 'position', '0 0 -13');
-//
-//     document.body.append(arrow);
-// }
 
 function createEl() {
     // let ascene = document.querySelector('a-scene');
@@ -59,9 +50,13 @@ function createEl() {
     //
     // document.getElementById('ascene').appendChild(triangle);
 
-    var element = document.createElement("div");
-    element.appendChild(document.createTextNode('The man who mistook his wife for a hat'));
-    document.getElementById('lc').appendChild(element);
+    let triangle = document.createElement("a-triangle");
+    triangle.setAttribute('position', {x: 0, y: 0, z: -3});
+    triangle.setAttribute('src','#platform');
+    triangle.setAttribute('rotation', {x: -90, y: 0, z: 0});
+    triangle.setAttribute('color', "#EF2D5E");
+
+    document.getElementById("a-scene").appendChild(triangle);
 
 }
 
