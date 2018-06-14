@@ -51,7 +51,7 @@ function createEl() {
 
     let triangle = document.createElement('a-triangle');
 
-    triangle.setAttribute('text', 'Hello');
+    // triangle.setAttribute('text', 'Hello');
     // triangle.setAttribute('position', '0 0 -13');
     triangle.setAttribute('position', {x: 1, y: 2, z: -3});
 
