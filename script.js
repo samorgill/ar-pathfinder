@@ -49,15 +49,20 @@ window.onload = function() {
 function createEl() {
     // let ascene = document.querySelector('a-scene');
 
-    let triangle = document.createElement('a-triangle');
-
-    // triangle.setAttribute('text', 'Hello');
-    // triangle.setAttribute('position', '0 0 -13');
+    // let triangle = document.createElement('a-triangle');
+    //
+    // // triangle.setAttribute('text', 'Hello');
+    // // triangle.setAttribute('position', '0 0 -13');
     // triangle.setAttribute('position', {x: 1, y: 2, z: -3});
+    //
+    // // triangle.object3D.position.set(1, 2, -3);
+    //
+    // document.getElementById('ascene').appendChild(triangle);
 
-    triangle.object3D.position.set(1, 2, -3);
+    var element = document.createElement("div");
+    element.appendChild(document.createTextNode('The man who mistook his wife for a hat'));
+    document.getElementById('lc').appendChild(element);
 
-    document.getElementById('ascene').appendChild(triangle);
 }
 
 
