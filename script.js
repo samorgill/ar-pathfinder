@@ -34,9 +34,7 @@ window.onload = function() {
 
     initMap();
 
-    setInterval(() => {
         currentPosotion();
-    }, 5000);
 
 };
 
@@ -45,7 +43,7 @@ function currentPosotion(){
     arrow.setAttribute(newEl, 'text', 'Hello Rob & Gav');
     arrow.setAttribute(newEl, 'position', '0 0 -13');
 
-    document.body.append(arrow)
+    document.body.append(arrow);
 }
 
 
