@@ -34,16 +34,25 @@ window.onload = function() {
 
     initMap();
 
-        currentPosotion();
+        createEl();
 
 };
 
-function currentPosotion(){
-    let arrow = document.createElement('a-triangle');
-    arrow.setAttribute(newEl, 'text', 'Hello Rob & Gav');
-    arrow.setAttribute(newEl, 'position', '0 0 -13');
+// function currentPosotion(){
+//     let arrow = this.renderer.createElement('a-triangle');
+//     arrow.setAttribute(newEl, 'text', 'Hello Rob & Gav');
+//     arrow.setAttribute(newEl, 'position', '0 0 -13');
+//
+//     document.body.append(arrow);
+// }
 
-    document.body.append(arrow);
+createEl() {
+    let newEl = this.renderer.createElement('a-triangle');
+
+    this.renderer.setAttribute(newEl, 'text', 'Hello');
+    this.renderer.setAttribute(newEl, 'position', '0 0 -13');
+
+    document.body.appendChild(newEL);
 }
 
 
