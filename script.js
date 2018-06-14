@@ -47,10 +47,10 @@ window.onload = function() {
 // }
 
 createEl() {
-    let newEl = this.renderer.createElement('a-triangle');
+    let newEl = document.createElement('a-triangle');
 
-    this.renderer.setAttribute(newEl, 'text', 'Hello');
-    this.renderer.setAttribute(newEl, 'position', '0 0 -13');
+    newEl.setAttribute('text', 'Hello');
+    newEl.setAttribute('position', '0 0 -13');
 
     document.body.appendChild(newEL);
 }
