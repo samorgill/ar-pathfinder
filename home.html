@@ -28,9 +28,11 @@
 
             <!--<a-triangle position="0 0 -8" src="#platform" rotation="-90 0 0" color="#EF2D5E">^</a-triangle>-->
             <!--<a-triangle position="0 0 -9" src="#platform" rotation="-90 0 0" color="#EF2D5E">^</a-triangle>-->
-
-            <a-triangle position="0 0 -12" src="#platform" rotation="-90 0 0" color="#EF2D5E">^</a-triangle>
-            <a-triangle position="0 0 -13" src="#platform" rotation="-90 0 0" color="#EF2D5E">^</a-triangle>
+            <script>
+                for(var i = -10; i > -20; i--){
+                    document.write("<a-triangle position='0 0 ' + i src='#platform' rotation='-90 0 0' color='#EF2D5E'>^</a-triangle>\n");
+                }
+            </script>
 
         </a-scene>
 
