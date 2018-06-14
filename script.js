@@ -53,7 +53,9 @@ function createEl() {
 
     // triangle.setAttribute('text', 'Hello');
     // triangle.setAttribute('position', '0 0 -13');
-    triangle.setAttribute('position', {x: 1, y: 2, z: -3});
+    // triangle.setAttribute('position', {x: 1, y: 2, z: -3});
+
+    triangle.object3D.position.set(1, 2, -3);
 
     document.getElementById('ascene').appendChild(triangle);
 }
