@@ -51,10 +51,11 @@ function createEl() {
     // document.getElementById('ascene').appendChild(triangle);
 
     let triangle = document.createElement("a-triangle");
-    triangle.setAttribute('position', {x: 0, y: 0, z: -3});
+    triangle.setAttribute('position', {x: 0, y: 0, z: -12});
     triangle.setAttribute('src','#platform');
     triangle.setAttribute('rotation', {x: -90, y: 0, z: 0});
     triangle.setAttribute('color', "#EF2D5E");
+    triangle.innerHTML = "^";
 
     document.getElementById("a-scene").appendChild(triangle);
 
