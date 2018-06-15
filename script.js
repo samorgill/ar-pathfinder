@@ -120,6 +120,8 @@ function updateLocation(){
             document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng   // display location on screen
 
 
+
+
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -169,40 +171,22 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 
 ///////////////////////////
-function getBluetoothDevice() {
 
-    log("Initalising bluetooth stuff");
-    
-    navigator.bluetooth.requestDevice({
-       filters: [{ namePrefix: 'Mini'}],
-       optionalServices: ['device_information']})
-   .then(device => {
-     log('Connecting to GATT Server...');
-     return device.gatt.connect();
-    })
-    .then(device => {
-         log('Getting RSSI data');
-         device.watchAdvertisements();
-         device.addEventListener('advertisementreceived', interpretIBeacon);
-    })
-   .catch(error => {
-     log('Argh! ' + error);
-   });
- }
+function getRelativeYCoordinate(bearing, distance){
+    let angle = bearing - 225;
+    let y = distance * Math.sin(toRadians(angle));
+    return y;
+}
 
-function interpretIBeacon(event) {
-  var rssi = event.rssi;
-  var appleData = event.manufacturerData.get(0x004C);
-  if (appleData.byteLength != 23 ||
-    appleData.getUint16(0, false) !== 0x0215) {
+function getRelativeXCoordinate(bearing, distance) {
+    let angle = bearing - 225;
+    let x = distance * Math.cos(toRadians(angle));
+}
+
+function toRadians (angle) {
+    return angle * (Math.PI / 180);
   }
-  var uuidArray = new Uint8Array(appleData.buffer, 2, 16);
-  var major = appleData.getUint16(18, false);
-  var minor = appleData.getUint16(20, false);
-  var txPowerAt1m = -appleData.getInt8(22);
-  log(txPowerAt1m - rssi);
-};
- 
+
  /* Utils */
  
  function padHex(value) {
