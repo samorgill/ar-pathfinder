@@ -1,6 +1,6 @@
 
-let point1;
-let point2;
+//let point1;
+//let point2;
 
 window.onload = function() {
 
@@ -83,16 +83,16 @@ function createEl() {
 }
 
 function run(){
-    point2 = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
+    //point2 = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
     setTimeout(function() {
         setInterval(function() {
             updateLocation();
-            //let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
-            //depth++;
+            let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
+            depth++;
             //let point1 = new google.maps.LatLng(53.4045471, -2.299247);
-            var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
-            document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: -1});
-            document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: heading, y: 0, z: 0});
+            //var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
+            document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
+            //document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: heading, y: 0, z: 0});
             //document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
         },1000)
     },1000);
@@ -108,7 +108,7 @@ function updateLocation(){
             };
 
             //nodeDistance = originalLat - pos.lat;
-            point1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            //point1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng   // display location on screen
 
 
