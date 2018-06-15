@@ -63,8 +63,9 @@ function createEl() {
 
 function run(){
     setInterval(function() {
-
-        document.getElementById("a-scene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: -20});
+        let depth = document.getElementById("a-scene").childNodes[9].getAttribute('position').z;
+        depth++;
+        document.getElementById("a-scene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
     },1000)
 };
 
