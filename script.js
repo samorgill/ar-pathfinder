@@ -32,6 +32,10 @@ window.onload = function() {
     // locate you.
     let map, infoWindow;
 
+    // button.addEventListener('pointerup', (event) => {
+    //     navigator.bluetooth.requestDevice
+    // });
+
     initMap();
 
     createEl();
@@ -56,8 +60,10 @@ function createEl() {
     triangle.setAttribute('rotation', {x: -90, y: 0, z: 0});
     triangle.setAttribute('color', "#EF2D5E");
 
-    document.getElementById("a-scene").appendChild(triangle);
+    // document.getElementById("a-scene").appendChild(triangle);
 
+
+    $('#ascene').append(triangle);
 }
 
 function generatePosition(curPos){
