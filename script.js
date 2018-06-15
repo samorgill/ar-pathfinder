@@ -34,10 +34,6 @@ window.onload = function() {
 
         document.body.appendChild(video);
 
-
-        // document.getElementById('startTracking').addEventListener("click", getBluetoothDevice);
-        // document.getElementById('startTracking').style.zIndex = "1000000000";
-
         let wp = new waypoint();
 
         console.log(waypoint.findShortestPath({xPos:20, yPos:20}, 'c'));
@@ -60,12 +56,6 @@ window.onload = function() {
     };
 
     run();
-    // button.addEventListener('pointerup', (event) => {
-    //     navigator.bluetooth.requestDevice
-    // });
-
-
-    // createEl();
 };
 
 function createEl() {
@@ -87,26 +77,19 @@ function run(){
             updateLocation();
             let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
             depth++;
-            //let point1 = new google.maps.LatLng(53.4045471, -2.299247);
 
             let p2 = {x: 53.40458149,y: -2.29921};
-            let angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
-            var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
-
             let locY = p2.y - p1.y;
             let locX = p2.x - p1.x;
-
-            console.log("Heading: " + heading);
             document.getElementById("ascene").childNodes[9].setAttribute('position',{x: locX, y: 0, z: locY});
-            document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: -90, y: heading, z: 0});
             //document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
 
         },1000)
     },1000);
 };
 
-function updateLocation(){
-
+function updateLocation() {
+    
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
             let pos = {
@@ -116,13 +99,18 @@ function updateLocation(){
 
             //nodeDistance = originalLat - pos.lat;
             point1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            p1.x = pos.lat;
-            p1.y = pos.lng;
-            document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng   // display location on screen
-
-
-
-
+            const origin = new google.maps.LatLng(53.4044831, -2.2987334);
+            const heading = google.maps.geometry.spherical.computeHeading(origin, point1);
+            const bearing = heading < 0 ? heading + 360 : heading;
+            const distance = google.maps.geometry.spherical.computeDistanceBetween(origin, point1);
+            p1.x = getRelativeXCoordinate(bearing, distance);
+            p1.y = getRelativeYCoordinate(bearing, distance);
+            console.log('Heading', heading);
+            console.log('Bearing', bearing);
+            console.log('Distance', distance);
+            console.log('Coordinates', p1.x, p1.y);
+            document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng // display location on screen
+            document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: -90, y: heading, z: 0});
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -173,32 +161,21 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 ///////////////////////////
 
-function getRelativeYCoordinate(bearing, distance){
+function getRelativeXCoordinate(bearing, distance) {
     let angle = bearing - 225;
     let y = distance * Math.sin(toRadians(angle));
     return y;
 }
 
-function getRelativeXCoordinate(bearing, distance) {
+function getRelativeYCoordinate(bearing, distance) {
     let angle = bearing - 225;
     let x = distance * Math.cos(toRadians(angle));
+    return x;
 }
 
 function toRadians (angle) {
     return angle * (Math.PI / 180);
   }
-
- /* Utils */
- 
- function padHex(value) {
-   return ('00' + value.toString(16).toUpperCase()).slice(-2);
- }
- 
- function getUsbVendorName(value) {
-   // Check out page source to see what valueToUsbVendorName object is.
-   return value +
-       (value in valueToUsbVendorName ? ' (' + valueToUsbVendorName[value] + ')' : '');
- }
 
  function log(value) {
     document.getElementById("myDeviceInfo").innerHTML = document.getElementById("myDeviceInfo").innerHTML + '<br />' + value;
