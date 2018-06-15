@@ -54,16 +54,16 @@ function createEl() {
     //
     // document.getElementById('ascene').appendChild(triangle);
 
-    let triangle = document.createElement("a-triangle");
-    triangle.setAttribute('position', {x: 0, y: 0, z: -2});
-    triangle.setAttribute('src','#platform');
-    triangle.setAttribute('rotation', {x: -90, y: 0, z: -3});
-    triangle.setAttribute('color', "#EF2D5E");
-    triangle.innerHTML = "^";
+    let triangle = document.createElement("<a-triangle position=\"0 0 -5\" src=\"#platform\" rotation=\"-90 0 0\" color=\"#EF2D5E\">^</a-triangle>");
+    // triangle.setAttribute('position', {x: 0, y: 0, z: -2});
+    // triangle.setAttribute('src','#platform');
+    // triangle.setAttribute('rotation', {x: -90, y: 0, z: -3});
+    // triangle.setAttribute('color', "#EF2D5E");
+    // triangle.innerHTML = "^";
 
-    document.getElementById("ascene").appendChild(triangle);
+    // document.getElementById("ascene").appendChild(triangle);
 
-    $( ".ascene" ).append( "<p>Test</p>" );
+    $( ".ascene" ).append( "<a-trian>Test</a-trian>" );
 }
 
 function run(){
@@ -71,6 +71,7 @@ function run(){
         let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
         depth++;
         document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
+        document.getElementById("a-scene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
         updateLocation();
     },1000)
 };
