@@ -92,8 +92,8 @@ var waypoint = function() {
 
   waypoint.getCoords = function(nodeName){
     return {
-      x: waypoints[nodeName].xPos,
-      y: waypoints[nodeName].yPos
+      xPos: waypoints[nodeName].xPos,
+      yPos: waypoints[nodeName].yPos
     }
   };
 
