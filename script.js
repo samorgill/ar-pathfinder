@@ -87,11 +87,11 @@ function run(){
     setTimeout(function() {
         setInterval(function() {
             updateLocation();
-            let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
-            depth++;
+            //let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
+            //depth++;
             //let point1 = new google.maps.LatLng(53.4045471, -2.299247);
             var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
-            document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
+            document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: -1});
             document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: heading, y: 0, z: 0});
             //document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
         },1000)
