@@ -34,7 +34,7 @@ window.onload = function() {
 
     initMap();
 
-    createEl();
+    //createEl();
 };
 
 function createEl() {
@@ -61,9 +61,11 @@ function createEl() {
 
 }
 
-function generatePosition(curPos){
-
-}
+function run(){
+    setInterval(function() {
+        console.log("test");
+    },1000)
+};
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -84,6 +86,7 @@ function initMap() {
             infoWindow.setContent('You');
             infoWindow.open(map);
             map.setCenter(pos);
+            run();
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
