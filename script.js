@@ -83,8 +83,8 @@ function run(){
             let angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
             var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
 
-            let locY = p2.y - p1.y;
-            let locX = p2.x - p1.x;
+            let locY = (p2.y - p1.y) > 1 ? 1 : 0;
+            let locX = (p2.x - p1.x) < -1 ? -1: 0;
             document.getElementById("ascene").childNodes[9].setAttribute('position',{x: locX, y: 0, z: locY});
             document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: -90, y: Math.abs(heading), z: 0});
             //document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
