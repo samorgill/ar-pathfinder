@@ -77,7 +77,7 @@ function run(){
 };
 
 function updateLocation(){
-    document.getElementById("myLocation").innerHTML = "<p> infoWindow.getPosition().lng() </p>"
+    document.getElementById("myLocation").innerHTML = infoWindow.getPosition().lng()
 }
 
 function initMap() {
