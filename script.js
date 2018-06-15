@@ -1,9 +1,13 @@
 
-//let point1;
-//let point2;
+let point1;
+
+let point2;// = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
+
+let p1 = {x:0, y:0};
 
 window.onload = function() {
 
+    console.log('loaded');
         let video = document.createElement('video');
         video.style.width = document.width + 'px';
         video.style.height = document.height + 'px';
@@ -31,10 +35,17 @@ window.onload = function() {
         document.body.appendChild(video);
 
 
-        document.getElementById('startTracking').addEventListener("click", getBluetoothDevice);
-        document.getElementById('startTracking').style.zIndex = "1000000000";
-        
-        
+        // document.getElementById('startTracking').addEventListener("click", getBluetoothDevice);
+        // document.getElementById('startTracking').style.zIndex = "1000000000";
+
+        let wp = new waypoint();
+
+        console.log(waypoint.findShortestPath({xPos:20, yPos:20}, 'c'));
+        console.log(waypoint.routeDistanceCalculator({xPos:0, yPos:0}, 'p'));
+
+        //wp.distanceCalculator('a');
+        // console.log(wp.findShortestPath('j', 'b'));
+        // console.log('dist ', wp.distanceCalculator({xPos:0, yPos:0}, 'c'));
 
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service
@@ -58,19 +69,7 @@ window.onload = function() {
 };
 
 function createEl() {
-    // let ascene = document.querySelector('a-scene');
-
     let triangle = document.createElement('a-triangle');
-    //
-    // // triangle.setAttribute('text', 'Hello');
-    // // triangle.setAttribute('position', '0 0 -13');
-    // triangle.setAttribute('position', {x: 1, y: 2, z: -3});
-    //
-    // // triangle.object3D.position.set(1, 2, -3);
-    //
-    // document.getElementById('ascene').appendChild(triangle);
-
-    // let triangle = document.createElement("<a-triangle position=\"0 0 -5\" src=\"#platform\" rotation=\"-90 0 0\" color=\"#EF2D5E\">^</a-triangle>");
     triangle.setAttribute('position', {x: 0, y: 0, z: -2});
     triangle.setAttribute('src','#platform');
     triangle.setAttribute('rotation', {x: -90, y: 0, z: -3});
@@ -79,21 +78,29 @@ function createEl() {
 
     document.getElementById("ascene").appendChild(triangle);
 
-    // $( ".ascene" ).append( "<a-trian>Test</a-trian>" );
 }
 
 function run(){
-    //point2 = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
+    point2 = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
     setTimeout(function() {
         setInterval(function() {
             updateLocation();
             let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
             depth++;
             //let point1 = new google.maps.LatLng(53.4045471, -2.299247);
-            //var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
-            document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
-            //document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: heading, y: 0, z: 0});
+
+            let p2 = {x: 53.40458149,y: -2.29921};
+            let angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+            var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
+
+            let locY = p2.y - p1.y;
+            let locX = p2.x - p1.x;
+
+            console.log("Heading: " + heading);
+            document.getElementById("ascene").childNodes[9].setAttribute('position',{x: locX, y: locY, z: -6});
+            document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: -90, y: heading, z: 0});
             //document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
+
         },1000)
     },1000);
 };
@@ -108,8 +115,12 @@ function updateLocation(){
             };
 
             //nodeDistance = originalLat - pos.lat;
-            //point1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            point1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            p1.x = pos.lat;
+            p1.y = pos.lng;
             document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng   // display location on screen
+
+
 
 
         }, function() {
@@ -161,40 +172,22 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 
 ///////////////////////////
-function getBluetoothDevice() {
 
-    log("Initalising bluetooth stuff");
-    
-    navigator.bluetooth.requestDevice({
-       filters: [{ namePrefix: 'Mini'}],
-       optionalServices: ['device_information']})
-   .then(device => {
-     log('Connecting to GATT Server...');
-     return device.gatt.connect();
-    })
-    .then(device => {
-         log('Getting RSSI data');
-         device.watchAdvertisements();
-         device.addEventListener('advertisementreceived', interpretIBeacon);
-    })
-   .catch(error => {
-     log('Argh! ' + error);
-   });
- }
+function getRelativeYCoordinate(bearing, distance){
+    let angle = bearing - 225;
+    let y = distance * Math.sin(toRadians(angle));
+    return y;
+}
 
-function interpretIBeacon(event) {
-  var rssi = event.rssi;
-  var appleData = event.manufacturerData.get(0x004C);
-  if (appleData.byteLength != 23 ||
-    appleData.getUint16(0, false) !== 0x0215) {
+function getRelativeXCoordinate(bearing, distance) {
+    let angle = bearing - 225;
+    let x = distance * Math.cos(toRadians(angle));
+}
+
+function toRadians (angle) {
+    return angle * (Math.PI / 180);
   }
-  var uuidArray = new Uint8Array(appleData.buffer, 2, 16);
-  var major = appleData.getUint16(18, false);
-  var minor = appleData.getUint16(20, false);
-  var txPowerAt1m = -appleData.getInt8(22);
-  log(txPowerAt1m - rssi);
-};
- 
+
  /* Utils */
  
  function padHex(value) {

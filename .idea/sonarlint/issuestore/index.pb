@@ -7,3 +7,9 @@
 	index.php,b\b\bb6499b8e938f92a3695fff1afe57edea4b9efb7
 9
 	script.js,3\1\313d6864fa48b411d082f7692efd0c0892788fc4
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+9
+	model.dae,3\4\345551fb987169e30e6b97b8a03aabcb73c2468d
+;
+location.js,9\d\9d759920914f4f792b1b64dee33b78b970d8c17b
