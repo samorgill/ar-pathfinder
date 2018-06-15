@@ -97,12 +97,41 @@ var waypoint = function() {
     }
   };
 
-  waypoint.findShortestPath = function (start, end) {
+  waypoint.findShortestPath = function (currentPos, end) {
     var pathfinder = new Graph(map);
-    return pathfinder.findShortestPath(start, end);
+    return pathfinder.findShortestPath(this.findClosestNode(currentPos), end);
   };
 
-  waypoint.distanceCalculator = function (currentPos, target) {
+  waypoint.findClosestNode = function(currentPos){
+    var nodes = Object.keys(waypoints);
+    var closestNode;
+    var closestDistance;
+    for(var i=0; i<nodes.length; i++) {
+
+      var newDistance = this.directDistanceCalculator(currentPos, nodes[i])
+      if(closestDistance==undefined || closestDistance>newDistance) {
+        closestDistance=newDistance;
+        closestNode=nodes[i];
+      }
+    }
+    return closestNode;
+  };
+
+  waypoint.routeDistanceCalculator = function(currentPos, target){
+    var closestNodeName = this.findClosestNode(currentPos);
+    var route = this.findShortestPath(closestNodeName, target);
+    var distance =this.directDistanceCalculator(currentPos, route[0]);
+
+    for(var j=0; j<route.length-1; j++){
+
+      var nodeName = route[j];
+      distance+=this.directDistanceCalculator({xPos: waypoints[nodeName].xPos, yPos: waypoints[route[j]].yPos}, route[j+1])
+      console.log(distance)
+    }
+
+  };
+
+  waypoint.directDistanceCalculator = function (currentPos, target) {
     var relativeX = waypoints[target].xPos - currentPos.xPos;
     var relativeY = waypoints[target].yPos - currentPos.yPos;
     return Math.sqrt(relativeX*relativeX + relativeY*relativeY);
