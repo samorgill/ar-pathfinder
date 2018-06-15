@@ -32,13 +32,13 @@ window.onload = function() {
     // locate you.
     let map, infoWindow;
 
+    run();
     // button.addEventListener('pointerup', (event) => {
     //     navigator.bluetooth.requestDevice
     // });
 
-    initMap();
 
-    createEl();
+    //createEl();
 };
 
 function createEl() {
@@ -55,20 +55,22 @@ function createEl() {
     // document.getElementById('ascene').appendChild(triangle);
 
     let triangle = document.createElement("a-triangle");
-    triangle.setAttribute('position', {x: 0, y: 0, z: -3});
+    triangle.setAttribute('position', {x: 0, y: 0, z: -12});
     triangle.setAttribute('src','#platform');
     triangle.setAttribute('rotation', {x: -90, y: 0, z: 0});
     triangle.setAttribute('color', "#EF2D5E");
+    triangle.innerHTML = "^";
 
-    // document.getElementById("a-scene").appendChild(triangle);
-
-
-    $('#ascene').append(triangle);
+    document.getElementById("a-scene").appendChild(triangle);
 }
 
-function generatePosition(curPos){
-
-}
+function run(){
+    setInterval(function() {
+        let depth = document.getElementById("a-scene").childNodes[9].getAttribute('position').z;
+        depth++;
+        document.getElementById("a-scene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
+    },1000)
+};
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
