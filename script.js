@@ -61,18 +61,23 @@ function createEl() {
     triangle.setAttribute('color', "#EF2D5E");
     triangle.innerHTML = "^";
 
-    document.getElementById("a-scene").appendChild(triangle);
+    document.getElementById("ascene").appendChild(triangle);
 
     $( ".ascene" ).append( "<p>Test</p>" );
 }
 
 function run(){
     setInterval(function() {
-        let depth = document.getElementById("a-scene").childNodes[9].getAttribute('position').z;
+        let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
         depth++;
-        document.getElementById("a-scene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
+        document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
+        updateLocation();
     },1000)
 };
+
+function updateLocation(){
+    document.getElementById("myLocation").innerHTML = "<p> infoWindow.getPosition().lng() </p>"
+}
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
