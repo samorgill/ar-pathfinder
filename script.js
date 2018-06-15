@@ -1,3 +1,5 @@
+
+let point1;
 window.onload = function() {
 
         let video = document.createElement('video');
@@ -84,8 +86,8 @@ function run(){
             updateLocation();
             let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
             depth++;
-            let point1 = new google.maps.LatLng(53.4045471, -2.299247);
-            let point2 = new google.maps.LatLng(53.40458149, -2.29921);
+            //let point1 = new google.maps.LatLng(53.4045471, -2.299247);
+            let point2 = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
             var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
             console.log("Heading: " + heading);
             document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
@@ -105,7 +107,7 @@ function updateLocation(){
             };
 
             //nodeDistance = originalLat - pos.lat;
-
+            point1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng   // display location on screen
 
 
