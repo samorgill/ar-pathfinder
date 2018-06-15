@@ -91,6 +91,7 @@ var waypoint = function() {
   });
 
   waypoint.getCoords = function(nodeName){
+
     return {
       xPos: waypoints[nodeName].xPos,
       yPos: waypoints[nodeName].yPos
@@ -126,8 +127,9 @@ var waypoint = function() {
 
       var nodeName = route[j];
       distance+=this.directDistanceCalculator({xPos: waypoints[nodeName].xPos, yPos: waypoints[route[j]].yPos}, route[j+1])
-      console.log(distance)
     }
+
+    return distance;
 
   };
 
