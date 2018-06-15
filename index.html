@@ -32,20 +32,23 @@
             <!--<a-triangle position="0 0 -8" src="#platform" rotation="-90 0 0" color="#EF2D5E">^</a-triangle>-->
             <!--<a-triangle position="0 0 -9" src="#platform" rotation="-90 0 0" color="#EF2D5E">^</a-triangle>-->
 
-            <a-triangle position="0 0 -12" src="#platform" rotation="-90 0 0" color="#EF2D5E">^</a-triangle>
-            <a-triangle position="0 0 -13" src="#platform" rotation="-90 0 0" color="#EF2D5E">^</a-triangle>
-            <a-triangle position="0 0 0" src="#platform" rotation="-90 0 0" color="#EF2D5E">N</a-triangle>
+            <a-triangle position="0 0 -7" src="#platform" rotation="-90 0 0" color="#7BC8A4"></a-triangle>
+            <a-triangle position="0 0 -5" src="#platform" rotation="-90 0 0" color="#7BC8A4"></a-triangle>
+            <a-triangle position="0 0 -3" src="#platform" rotation="-90 0 0" color="#7BC8A4"></a-triangle>
             <div id="myLocation"></div>
         </a-scene>
     </body>
 <div id="map"></div>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuV_1Wy4gZJZK4oeKzTpkBZUlW4nhDzLI&callback=initMap"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuV_1Wy4gZJZK4oeKzTpkBZUlW4nhDzLI&callback=initMap">
+</script>
 <!--<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry"></script>-->
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="./script.js"></script>
+<script src="./djikstra/waypoint.js"></script>
+<script src="./djikstra/graph.js"></script>
 <script src="./location.js"></script>
 
 </body>
