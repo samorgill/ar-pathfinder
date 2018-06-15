@@ -33,6 +33,7 @@ window.onload = function() {
     let map, infoWindow;
 
     initMap();
+    run();
 
     //createEl();
 };
@@ -58,7 +59,6 @@ function createEl() {
     triangle.innerHTML = "^";
 
     document.getElementById("a-scene").appendChild(triangle);
-    run();
 }
 
 function run(){
