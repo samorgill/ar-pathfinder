@@ -88,8 +88,8 @@ function run(){
             let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
             depth++;
             //let point1 = new google.maps.LatLng(53.4045471, -2.299247);
-
-            let p2 = {x: 53.40458149,y: -2.29921};
+            let neilsDesk = {x: 53.40463411810142, y:-2.299398672391101};
+            let p2 = neilsDesk;
             let angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
             var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
 
