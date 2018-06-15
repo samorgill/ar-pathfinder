@@ -31,6 +31,11 @@ window.onload = function() {
     // failed.", it means you probably did not give permission for the browser to
     // locate you.
     let map, infoWindow;
+    let originalLat;
+    let node ={
+        lat:0,
+        lng:0
+    };
 
     run();
     // button.addEventListener('pointerup', (event) => {
@@ -72,9 +77,10 @@ function run(){
         let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
         depth++;
         document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
-        document.getElementById("a-scene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
     },1000)
 };
+
+
 
 function updateLocation(){
 
@@ -85,6 +91,9 @@ function updateLocation(){
                 lng: position.coords.longitude
             };
 
+
+
+            document.getElementById("node").setAttribute('position',{x: 0, y: 0, z: originalLat - pos.lat});
             document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng   // display location on screen
 
 
@@ -111,7 +120,9 @@ function initMap() {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-
+            originalLat = pos.lat;
+            node.lat = pos.lat;
+            node.lng = pos.lng;
             infoWindow.setPosition(pos);
             infoWindow.setContent('You');
             infoWindow.open(map);
