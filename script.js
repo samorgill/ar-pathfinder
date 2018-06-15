@@ -73,13 +73,16 @@ function createEl() {
 }
 
 function run(){
-    setInterval(function() {
-        updateLocation();
-        let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
-        depth++;
-        document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
-        document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
-    },1000)
+    setTimeout(function() {
+        setInterval(function() {
+            updateLocation();
+            let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
+            depth++;
+            document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
+            document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
+        },1000)
+    },1000);
+
 };
 
 
