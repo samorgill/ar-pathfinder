@@ -65,8 +65,13 @@ function run(){
         let depth = document.getElementById("a-scene").childNodes[9].getAttribute('position').z;
         depth++;
         document.getElementById("a-scene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
+        updateLocation();
     },1000)
 };
+
+function updateLocation(){
+    document.getElementById("myLocation").innerHTML = "<p> infoWindow.getPosition().lng() </p>"
+}
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
