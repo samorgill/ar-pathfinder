@@ -38,7 +38,7 @@ window.onload = function() {
     // locate you.
     let map, infoWindow;
     let originalLat = 0;
-    let nodeDistance = 0;
+    //let nodeDistance = 0;
     let node ={
         lat:0,
         lng:0
@@ -84,8 +84,13 @@ function run(){
             updateLocation();
             let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
             depth++;
+            let point1 = new google.maps.LatLng(53.4045471, -2.299247);
+            let point2 = new google.maps.LatLng(53.40458149, -2.29921);
+            var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
+            console.log("Heading: " + heading);
             document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
-            document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
+            document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: heading, y: 0, z: 0});
+            //document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
         },1000)
     },1000);
 };
@@ -99,7 +104,7 @@ function updateLocation(){
                 lng: position.coords.longitude
             };
 
-            nodeDistance = originalLat - pos.lat;
+            //nodeDistance = originalLat - pos.lat;
 
             document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng   // display location on screen
 
@@ -128,8 +133,8 @@ function initMap() {
                 lng: position.coords.longitude
             };
             originalLat = pos.lat;
-            node.lat = pos.lat;
-            node.lng = pos.lng;
+//            node.lat = pos.lat;
+//            node.lng = pos.lng;
             infoWindow.setPosition(pos);
             infoWindow.setContent('You');
             infoWindow.open(map);
