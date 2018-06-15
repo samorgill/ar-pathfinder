@@ -91,9 +91,9 @@ function updateLocation(){
                 lng: position.coords.longitude
             };
 
+            let nodeDistance = originalLat - pos.lat;
 
-
-            document.getElementById("node").setAttribute('position',{x: 0, y: 0, z: originalLat - pos.lat});
+            document.getElementById("node").setAttribute('position',{x: 0, y: 0, z: nodeDistance});
             document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng   // display location on screen
 
 
