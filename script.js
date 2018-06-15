@@ -6,6 +6,7 @@ let point2;// = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
 
 window.onload = function() {
 
+    console.log('loaded');
         let video = document.createElement('video');
         video.style.width = document.width + 'px';
         video.style.height = document.height + 'px';
@@ -35,8 +36,15 @@ window.onload = function() {
 
         document.getElementById('startTracking').addEventListener("click", getBluetoothDevice);
         document.getElementById('startTracking').style.zIndex = "1000000000";
-        
-        
+
+        let wp = new waypoint();
+
+        console.log(waypoint.findShortestPath({xPos:20, yPos:20}, 'c'));
+        console.log(waypoint.routeDistanceCalculator({xPos:0, yPos:0}, 'p'));
+
+        //wp.distanceCalculator('a');
+        // console.log(wp.findShortestPath('j', 'b'));
+        // console.log('dist ', wp.distanceCalculator({xPos:0, yPos:0}, 'c'));
 
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service
@@ -60,19 +68,7 @@ window.onload = function() {
 };
 
 function createEl() {
-    // let ascene = document.querySelector('a-scene');
-
     let triangle = document.createElement('a-triangle');
-    //
-    // // triangle.setAttribute('text', 'Hello');
-    // // triangle.setAttribute('position', '0 0 -13');
-    // triangle.setAttribute('position', {x: 1, y: 2, z: -3});
-    //
-    // // triangle.object3D.position.set(1, 2, -3);
-    //
-    // document.getElementById('ascene').appendChild(triangle);
-
-    // let triangle = document.createElement("<a-triangle position=\"0 0 -5\" src=\"#platform\" rotation=\"-90 0 0\" color=\"#EF2D5E\">^</a-triangle>");
     triangle.setAttribute('position', {x: 0, y: 0, z: -2});
     triangle.setAttribute('src','#platform');
     triangle.setAttribute('rotation', {x: -90, y: 0, z: -3});
@@ -81,7 +77,6 @@ function createEl() {
 
     document.getElementById("ascene").appendChild(triangle);
 
-    // $( ".ascene" ).append( "<a-trian>Test</a-trian>" );
 }
 
 function run(){
@@ -97,6 +92,7 @@ function run(){
             document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: -10});
             document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: -90, y: heading, z: 0});
             //document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
+
         },1000)
     },1000);
 };
