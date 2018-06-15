@@ -35,8 +35,8 @@ window.onload = function() {
         document.body.appendChild(video);
 
 
-        document.getElementById('startTracking').addEventListener("click", getBluetoothDevice);
-        document.getElementById('startTracking').style.zIndex = "1000000000";
+        // document.getElementById('startTracking').addEventListener("click", getBluetoothDevice);
+        // document.getElementById('startTracking').style.zIndex = "1000000000";
 
         let wp = new waypoint();
 
