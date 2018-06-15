@@ -90,7 +90,7 @@ var waypoint = function() {
     map[k] = waypoints[k].links;
   });
 
-  waypoint.getCoords=function(nodeName){
+  waypoint.getCoords = function(nodeName){
     return {
       x: waypoints[nodeName].xPos,
       y: waypoints[nodeName].yPos
@@ -100,6 +100,12 @@ var waypoint = function() {
   waypoint.findShortestPath = function (start, end) {
     var pathfinder = new Graph(map);
     return pathfinder.findShortestPath(start, end);
+  };
+
+  waypoint.distanceCalculator = function (currentPos, target) {
+    var relativeX = waypoints[target].xPos - currentPos.xPos;
+    var relativeY = waypoints[target].yPos - currentPos.yPos;
+    return Math.sqrt(relativeX*relativeX + relativeY*relativeY);
   };
 
   return waypoint;
