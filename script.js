@@ -58,7 +58,7 @@ function createEl() {
     triangle.innerHTML = "^";
 
     document.getElementById("a-scene").appendChild(triangle);
-
+    run();
 }
 
 function run(){
@@ -87,7 +87,6 @@ function initMap() {
             infoWindow.setContent('You');
             infoWindow.open(map);
             map.setCenter(pos);
-            run();
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
