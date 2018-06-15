@@ -1,7 +1,7 @@
 
 let point1;
 
-let point2 = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
+let point2;// = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
 
 
 window.onload = function() {
@@ -85,7 +85,7 @@ function createEl() {
 }
 
 function run(){
-    //point2 = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
+    point2 = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
     setTimeout(function() {
         setInterval(function() {
             updateLocation();
