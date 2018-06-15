@@ -38,6 +38,7 @@ window.onload = function() {
         lng:0
     };
 
+    run();
     // button.addEventListener('pointerup', (event) => {
     //     navigator.bluetooth.requestDevice
     // });
@@ -127,7 +128,6 @@ function initMap() {
             infoWindow.setContent('You');
             infoWindow.open(map);
             map.setCenter(pos);
-            run();
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
