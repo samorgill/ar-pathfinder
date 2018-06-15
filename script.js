@@ -1,3 +1,7 @@
+
+//let point1;
+//let point2;
+
 window.onload = function() {
 
         let video = document.createElement('video');
@@ -38,7 +42,7 @@ window.onload = function() {
     // locate you.
     let map, infoWindow;
     let originalLat = 0;
-    let nodeDistance = 0;
+    //let nodeDistance = 0;
     let node ={
         lat:0,
         lng:0
@@ -79,13 +83,17 @@ function createEl() {
 }
 
 function run(){
+    //point2 = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
     setTimeout(function() {
         setInterval(function() {
             updateLocation();
             let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
             depth++;
+            //let point1 = new google.maps.LatLng(53.4045471, -2.299247);
+            //var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
             document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
-            document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
+            //document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: heading, y: 0, z: 0});
+            //document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
         },1000)
     },1000);
 };
@@ -99,8 +107,8 @@ function updateLocation(){
                 lng: position.coords.longitude
             };
 
-            nodeDistance = originalLat - pos.lat;
-
+            //nodeDistance = originalLat - pos.lat;
+            //point1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng   // display location on screen
 
 
@@ -128,8 +136,8 @@ function initMap() {
                 lng: position.coords.longitude
             };
             originalLat = pos.lat;
-            node.lat = pos.lat;
-            node.lng = pos.lng;
+//            node.lat = pos.lat;
+//            node.lng = pos.lng;
             infoWindow.setPosition(pos);
             infoWindow.setContent('You');
             infoWindow.open(map);
@@ -158,105 +166,34 @@ function getBluetoothDevice() {
     log("Initalising bluetooth stuff");
     
     navigator.bluetooth.requestDevice({
-       acceptAllDevices: true,
+       filters: [{ namePrefix: 'Mini'}],
        optionalServices: ['device_information']})
    .then(device => {
-    log('Connecting to GATT Server...');
+     log('Connecting to GATT Server...');
      return device.gatt.connect();
-    log('Connected');
-})
-   .then(server => {
-     log('Getting Device Information Service...');
-     return server.getPrimaryService('device_information');
-   })
-   .then(service => {
-     log('Getting Device Information Characteristics...');
-     return service.getCharacteristics();
-   })
-   .then(characteristics => {
-     let queue = Promise.resolve();
-     let decoder = new TextDecoder('utf-8');
-     characteristics.forEach(characteristic => {
-       switch (characteristic.uuid) {
- 
-         case BluetoothUUID.getCharacteristic('manufacturer_name_string'):
-           queue = queue.then(_ => characteristic.readValue()).then(value => {
-             log('> Manufacturer Name String: ' + decoder.decode(value));
-           });
-           break;
- 
-         case BluetoothUUID.getCharacteristic('model_number_string'):
-           queue = queue.then(_ => characteristic.readValue()).then(value => {
-             log('> Model Number String: ' + decoder.decode(value));
-           });
-           break;
- 
-         case BluetoothUUID.getCharacteristic('hardware_revision_string'):
-           queue = queue.then(_ => characteristic.readValue()).then(value => {
-             log('> Hardware Revision String: ' + decoder.decode(value));
-           });
-           break;
- 
-         case BluetoothUUID.getCharacteristic('firmware_revision_string'):
-           queue = queue.then(_ => characteristic.readValue()).then(value => {
-             log('> Firmware Revision String: ' + decoder.decode(value));
-           });
-           break;
- 
-         case BluetoothUUID.getCharacteristic('software_revision_string'):
-           queue = queue.then(_ => characteristic.readValue()).then(value => {
-             log('> Software Revision String: ' + decoder.decode(value));
-           });
-           break;
- 
-         case BluetoothUUID.getCharacteristic('system_id'):
-           queue = queue.then(_ => characteristic.readValue()).then(value => {
-             log('> System ID: ');
-             log('  > Manufacturer Identifier: ' +
-                 padHex(value.getUint8(4)) + padHex(value.getUint8(3)) +
-                 padHex(value.getUint8(2)) + padHex(value.getUint8(1)) +
-                 padHex(value.getUint8(0)));
-             log('  > Organizationally Unique Identifier: ' +
-                 padHex(value.getUint8(7)) + padHex(value.getUint8(6)) +
-                 padHex(value.getUint8(5)));
-           });
-           break;
- 
-         case BluetoothUUID.getCharacteristic('ieee_11073-20601_regulatory_certification_data_list'):
-           queue = queue.then(_ => characteristic.readValue()).then(value => {
-             log('> IEEE 11073-20601 Regulatory Certification Data List: ' +
-                 decoder.decode(value));
-           });
-           break;
- 
-         case BluetoothUUID.getCharacteristic('pnp_id'):
-           queue = queue.then(_ => characteristic.readValue()).then(value => {
-             log('> PnP ID:');
-             log('  > Vendor ID Source: ' +
-                 (value.getUint8(0) === 1 ? 'Bluetooth' : 'USB'));
-             if (value.getUint8(0) === 1) {
-               log('  > Vendor ID: ' +
-                   (value.getUint8(1) | value.getUint8(2) << 8));
-             } else {
-               log('  > Vendor ID: ' +
-                   getUsbVendorName(value.getUint8(1) | value.getUint8(2) << 8));
-             }
-             log('  > Product ID: ' +
-                 (value.getUint8(3) | value.getUint8(4) << 8));
-             log('  > Product Version: ' +
-                 (value.getUint8(5) | value.getUint8(6) << 8));
-           });
-           break;
- 
-         default: log('> Unknown Characteristic: ' + characteristic.uuid);
-       }
-     });
-     return queue;
-   })
+    })
+    .then(device => {
+         log('Getting RSSI data');
+         device.watchAdvertisements();
+         device.addEventListener('advertisementreceived', interpretIBeacon);
+    })
    .catch(error => {
      log('Argh! ' + error);
    });
  }
+
+function interpretIBeacon(event) {
+  var rssi = event.rssi;
+  var appleData = event.manufacturerData.get(0x004C);
+  if (appleData.byteLength != 23 ||
+    appleData.getUint16(0, false) !== 0x0215) {
+  }
+  var uuidArray = new Uint8Array(appleData.buffer, 2, 16);
+  var major = appleData.getUint16(18, false);
+  var minor = appleData.getUint16(20, false);
+  var txPowerAt1m = -appleData.getInt8(22);
+  log(txPowerAt1m - rssi);
+};
  
  /* Utils */
  
