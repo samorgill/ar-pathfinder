@@ -33,6 +33,10 @@ window.onload = function() {
     let map, infoWindow;
 
     run();
+    // button.addEventListener('pointerup', (event) => {
+    //     navigator.bluetooth.requestDevice
+    // });
+
 
     //createEl();
 };
