@@ -2,6 +2,8 @@
 let point1;
 
 let point2 = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
+
+
 window.onload = function() {
 
         let video = document.createElement('video');
@@ -91,7 +93,7 @@ function run(){
             //let point1 = new google.maps.LatLng(53.4045471, -2.299247);
             var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
             console.log("Heading: " + heading);
-            document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
+            document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: -10});
             document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: heading, y: 0, z: 0});
             //document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
         },1000)
