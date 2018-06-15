@@ -32,8 +32,8 @@ window.onload = function() {
     // locate you.
     let map, infoWindow;
 
-    initMap();
     run();
+    initMap();
 
     //createEl();
 };
