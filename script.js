@@ -202,3 +202,5 @@ function toRadians (angle) {
  function log(value) {
     document.getElementById("myDeviceInfo").innerHTML = document.getElementById("myDeviceInfo").innerHTML + '<br />' + value;
  }
+
+

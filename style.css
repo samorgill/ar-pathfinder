@@ -30,11 +30,41 @@ video {
 
 #map {
     height: 30%;
-    width: 50%;
+    width: 30%;
     position: absolute;
     bottom: 0;
     right: 0;
+    display: none;
 }
+
+.hidden {
+    display: hide;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    opacity: 0.5;
+}
+
+.container .btn {
+    position: absolute;
+    top: 0%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #f1f1f1;
+    color: black;
+    font-size: 16px;
+    padding: 16px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 100;
+}
+
 /* Optional: Makes the sample page fill the window. */
 html, body {
     height: 100%;
