@@ -32,6 +32,7 @@ window.onload = function() {
     // locate you.
     let map, infoWindow;
     let originalLat;
+    let nodeDistance;
     let node ={
         lat:0,
         lng:0
@@ -92,7 +93,7 @@ function updateLocation(){
                 lng: position.coords.longitude
             };
 
-            let nodeDistance = originalLat - pos.lat;
+            nodeDistance = originalLat - pos.lat;
 
             document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng   // display location on screen
 
