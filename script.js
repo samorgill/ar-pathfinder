@@ -77,6 +77,7 @@ function run(){
         let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
         depth++;
         document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
+        document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: Math.round(nodeDistance * 100000)});
     },1000)
 };
 
@@ -93,7 +94,6 @@ function updateLocation(){
 
             let nodeDistance = originalLat - pos.lat;
 
-            document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: Math.round(nodeDistance * 100000)});
             document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng   // display location on screen
 
 
