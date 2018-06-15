@@ -77,7 +77,7 @@ function run(){
 };
 
 function updateLocation(){
-    document.getElementById("myLocation").innerHTML = infoWindow.getPosition().lng()
+    initMap();
 }
 
 function initMap() {
@@ -99,6 +99,7 @@ function initMap() {
             infoWindow.setContent('You');
             infoWindow.open(map);
             map.setCenter(pos);
+            document.getElementById("myLocation").innerHTML = infoWindow.getPosition().lat() + ' ' + infoWindow.getPosition().lng()   // display location on screen
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
