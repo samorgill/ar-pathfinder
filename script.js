@@ -77,8 +77,7 @@ function run(){
 };
 
 function updateLocation(){
-    document.getElementById("myLocation").innerHTML = infoWindow.getPosition().lat() + ' ' infoWindow.getPosition().lng()   // display location on screen
-
+    document.getElementById("myLocation").innerHTML = infoWindow.getCurrentPosition().lat() + ' ' + infoWindow.getCurrentPosition().lng()   // display location on screen
 }
 
 function initMap() {
@@ -100,7 +99,6 @@ function initMap() {
             infoWindow.setContent('You');
             infoWindow.open(map);
             map.setCenter(pos);
-            navigator.geolocation.watchPosition(updateLocation(), handleLocationError);
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
