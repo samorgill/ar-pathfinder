@@ -63,7 +63,8 @@ function createEl() {
 
 function run(){
     setInterval(function() {
-        console.log("test");
+
+        document.getElementById("a-scene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: -20});
     },1000)
 };
 
