@@ -166,7 +166,7 @@ function getBluetoothDevice() {
     log("Initalising bluetooth stuff");
     
     navigator.bluetooth.requestDevice({
-       acceptAllDevices: true,
+       filters: [{ namePrefix: 'Mini'}],
        optionalServices: ['device_information']})
    .then(device => {
     log('Connecting to GATT Server...');
