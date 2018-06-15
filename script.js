@@ -62,9 +62,6 @@ function createEl() {
 
 function run(){
     setInterval(function() {
-
-        if(navigator.geolocation.getCurrentPosition())
-
         let depth = document.getElementById("a-scene").childNodes[9].getAttribute('position').z;
         depth++;
         document.getElementById("a-scene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
