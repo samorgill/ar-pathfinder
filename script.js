@@ -78,7 +78,7 @@ function run(){
         let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
         depth++;
         document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
-        document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: 5});
+        document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance});
     },1000)
 };
 
