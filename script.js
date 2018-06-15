@@ -169,13 +169,13 @@ function getBluetoothDevice() {
        filters: [{ namePrefix: 'Mini'}],
        optionalServices: ['device_information']})
    .then(device => {
-     log('Connecting to GATT Server...');
+     log('Connecting to GATT Server....');
      return device.gatt.connect();
     })
     .then(device => {
          log('Getting RSSI data');
-         device.watchAdvertisements();
-         device.addEventListener('advertisementreceived', interpretIBeacon);
+         log(device.adData.rssi);
+         //device.addEventListener('advertisementreceived', interpretIBeacon);
     })
    .catch(error => {
      log('Argh! ' + error);
