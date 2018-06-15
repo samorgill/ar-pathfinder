@@ -3,6 +3,7 @@ let point1;
 
 let point2;// = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
 
+let p1 = {x:0, y:0};
 
 window.onload = function() {
 
@@ -87,6 +88,10 @@ function run(){
             let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
             depth++;
             //let point1 = new google.maps.LatLng(53.4045471, -2.299247);
+
+            let p2 = {x: 53.40458149,y: -2.29921};
+            let angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+            console.log(angle);
             var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
             console.log("Heading: " + heading);
             document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: -10});
@@ -108,6 +113,8 @@ function updateLocation(){
 
             //nodeDistance = originalLat - pos.lat;
             point1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            p1.x = pos.lat;
+            p1.y = pos.lng;
             document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng   // display location on screen
 
 
