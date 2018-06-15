@@ -37,6 +37,12 @@ window.onload = function() {
     // failed.", it means you probably did not give permission for the browser to
     // locate you.
     let map, infoWindow;
+    let originalLat = 0;
+    let nodeDistance = 0;
+    let node ={
+        lat:0,
+        lng:0
+    };
 
     run();
     // button.addEventListener('pointerup', (event) => {
@@ -73,19 +79,39 @@ function createEl() {
 }
 
 function run(){
-    setInterval(function() {
-        updateLocation();
-        let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
-        depth++;
-        document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
-        document.getElementById("a-scene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
-
-    },1000)
+    setTimeout(function() {
+        setInterval(function() {
+            updateLocation();
+            let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
+            depth++;
+            document.getElementById("ascene").childNodes[9].setAttribute('position',{x: 0, y: 0, z: depth});
+            document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
+        },1000)
+    },1000);
 };
 
 function updateLocation(){
-    document.getElementById("myLocation").innerHTML = infoWindow.getPosition().lng()
-}
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            let pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            nodeDistance = originalLat - pos.lat;
+
+            document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng   // display location on screen
+
+
+        }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+        });
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+    }
+    }
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -101,7 +127,9 @@ function initMap() {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-
+            originalLat = pos.lat;
+            node.lat = pos.lat;
+            node.lng = pos.lng;
             infoWindow.setPosition(pos);
             infoWindow.setContent('You');
             infoWindow.open(map);
