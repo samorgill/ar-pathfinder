@@ -98,7 +98,7 @@ function run(){
 
             console.log("Heading: " + heading);
             document.getElementById("ascene").childNodes[9].setAttribute('position',{x: locX, y: 0, z: locY});
-            document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: -90, y: heading, z: 0});
+            document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: -90, y: Math.abs(heading), z: 0});
             //document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
 
         },1000)
