@@ -77,11 +77,16 @@ function run(){
             updateLocation();
             let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
             depth++;
+            //let point1 = new google.maps.LatLng(53.4045471, -2.299247);
+            let neilsDesk = {x: 53.40463411810142, y:-2.299398672391101};
+            let p2 = neilsDesk;
+            let angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+            var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
 
-            let p2 = {x: 53.40458149,y: -2.29921};
             let locY = p2.y - p1.y;
             let locX = p2.x - p1.x;
             document.getElementById("ascene").childNodes[9].setAttribute('position',{x: locX, y: 0, z: locY});
+            document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: -90, y: Math.abs(heading), z: 0});
             //document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
 
         },1000)
@@ -103,14 +108,13 @@ function updateLocation() {
             const heading = google.maps.geometry.spherical.computeHeading(origin, point1);
             const bearing = heading < 0 ? heading + 360 : heading;
             const distance = google.maps.geometry.spherical.computeDistanceBetween(origin, point1);
-            p1.x = getRelativeXCoordinate(bearing, distance);
-            p1.y = getRelativeYCoordinate(bearing, distance);
+            const x = getRelativeXCoordinate(bearing, distance);
+            const y = getRelativeYCoordinate(bearing, distance);
             console.log('Heading', heading);
             console.log('Bearing', bearing);
             console.log('Distance', distance);
-            console.log('Coordinates', p1.x, p1.y);
+            console.log('Coordinates', x, y);
             document.getElementById("myLocation").innerHTML = pos.lat + ' ' + pos.lng // display location on screen
-            document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: -90, y: heading, z: 0});
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
