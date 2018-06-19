@@ -56,18 +56,18 @@ window.onload = function() {
     };
 
     run();
+    createEl();
 };
 
 function createEl() {
     let triangle = document.createElement('a-triangle');
-    triangle.setAttribute('position', {x: 0, y: 0, z: -2});
+    triangle.setAttribute('position', {x: 0, y: 0, z: -4});
     triangle.setAttribute('src','#platform');
     triangle.setAttribute('rotation', {x: -90, y: 0, z: -3});
     triangle.setAttribute('color', "#EF2D5E");
-    triangle.innerHTML = "^";
+    // triangle.innerHTML = "^";
 
     document.getElementById("ascene").appendChild(triangle);
-
 }
 
 function run(){
@@ -85,7 +85,7 @@ function run(){
 
             let locY = (p2.y - p1.y) > 1 ? 1 : 0;
             let locX = (p2.x - p1.x) < -1 ? -1: 0;
-            document.getElementById("ascene").childNodes[9].setAttribute('position',{x: locX, y: 0, z: locY});
+            // document.getElementById("ascene").childNodes[9].setAttribute('position',{x: locX, y: 0, z: locY});
             document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: -90, y: Math.abs(heading), z: 0});
             //document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
             console.log('polling');
@@ -162,9 +162,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.open(map);
 }
 
-
-///////////////////////////
-
 function getRelativeXCoordinate(bearing, distance) {
     let angle = bearing - 225;
     let y = distance * Math.sin(toRadians(angle));
@@ -184,5 +181,3 @@ function toRadians (angle) {
  function log(value) {
     document.getElementById("myDeviceInfo").innerHTML = document.getElementById("myDeviceInfo").innerHTML + '<br />' + value;
  }
-
-
