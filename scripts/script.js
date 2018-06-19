@@ -32,7 +32,7 @@ window.onload = function() {
             video.srcObject = stream;
         });
 
-        document.body.appendChild(video);
+        // document.body.appendChild(video);
 
         let wp = new waypoint();
 
@@ -72,8 +72,8 @@ function createEl() {
 
 function run(){
     point2 = new google.maps.LatLng(53.40458149, -2.29921); // cupboard room
-    setTimeout(function() {
-        setInterval(function() {
+    setTimeout( () => {
+        setInterval( () => {
             updateLocation();
             let depth = document.getElementById("ascene").childNodes[9].getAttribute('position').z;
             depth++;
@@ -81,14 +81,14 @@ function run(){
             let neilsDesk = {x: 53.40463411810142, y:-2.299398672391101};
             let p2 = neilsDesk;
             let angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
-            var heading = google.maps.geometry.spherical.computeHeading(point1,point2);
+            let heading = google.maps.geometry.spherical.computeHeading(point1,point2);
 
             let locY = (p2.y - p1.y) > 1 ? 1 : 0;
             let locX = (p2.x - p1.x) < -1 ? -1: 0;
             document.getElementById("ascene").childNodes[9].setAttribute('position',{x: locX, y: 0, z: locY});
             document.getElementById("ascene").childNodes[9].setAttribute('rotation',{x: -90, y: Math.abs(heading), z: 0});
             //document.getElementById("ascene").childNodes[13].setAttribute('position',{x: 0, y: 0, z: nodeDistance*1000000});
-
+            console.log('polling');
         },1000)
     },1000);
 };
