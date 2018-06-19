@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3be75227-c4a2-407c-a5b0-6292628a3dd9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/script.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,8 +28,8 @@
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+            <state relative-caret-position="162">
+              <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -48,8 +46,8 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="175">
+              <caret line="87" column="97" lean-forward="true" selection-start-line="87" selection-start-column="97" selection-end-line="87" selection-end-column="97" />
             </state>
           </provider>
         </entry>
@@ -171,6 +169,11 @@
             <path>
               <item name="ar-pathfinder" type="b2602c69:ProjectViewProjectNode" />
               <item name="ar-pathfinder" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ar-pathfinder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ar-pathfinder" type="462c0819:PsiDirectoryNode" />
+              <item name="3d_models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ar-pathfinder" type="b2602c69:ProjectViewProjectNode" />
@@ -318,7 +321,7 @@
       <workItem from="1528547217025" duration="1918000" />
       <workItem from="1528915429057" duration="1689000" />
       <workItem from="1529064834550" duration="8320000" />
-      <workItem from="1529400464606" duration="4376000" />
+      <workItem from="1529400464606" duration="6496000" />
     </task>
     <task id="LOCAL-00001" summary="home">
       <created>1529049184289</created>
@@ -439,17 +442,30 @@
       <option name="project" value="LOCAL" />
       <updated>1529404794977</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Updated the orientation">
+      <created>1529411904864</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1529411904864</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added gun">
+      <created>1529412701758</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1529412701758</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32102000" />
+    <option name="totallyTimeSpent" value="34222000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24925596" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24925596" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="SonarLint" order="7" />
@@ -457,7 +473,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3273906" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32901135" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32901135" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Palette" order="0" />
@@ -498,7 +514,9 @@
     <MESSAGE value="title" />
     <MESSAGE value="removed bt" />
     <MESSAGE value="video" />
-    <option name="LAST_COMMIT_MESSAGE" value="video" />
+    <MESSAGE value="Updated the orientation" />
+    <MESSAGE value="Added gun" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added gun" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/style.css">
@@ -771,6 +789,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/gav.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -778,17 +803,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="175">
+          <caret line="87" column="97" lean-forward="true" selection-start-line="87" selection-start-column="97" selection-end-line="87" selection-end-column="97" />
         </state>
       </provider>
     </entry>
