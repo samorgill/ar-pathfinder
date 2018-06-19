@@ -32,7 +32,7 @@ window.onload = function() {
             video.srcObject = stream;
         });
 
-        // document.body.appendChild(video);
+        document.body.appendChild(video);
 
         let wp = new waypoint();
 
